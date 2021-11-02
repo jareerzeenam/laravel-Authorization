@@ -22,3 +22,25 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::group([
+        'prefix' => 'admin',
+        'middleware' => 'is_admin',
+        'as' => 'admin.',
+
+    ],function(){
+        Route::get('tasks',[\App\Http\Controllers\Admin\TaskControlller::class,'index'])
+        ->name('tasks.index');
+    });
+
+    Route::group([
+        'prefix' => 'user',
+        'as' => 'user.',
+
+    ],function(){
+        Route::get('tasks',[\App\Http\Controllers\User\TaskControlller::class,'index'])
+        ->name('tasks.index');
+    });
+});
