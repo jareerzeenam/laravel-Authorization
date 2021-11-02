@@ -26,7 +26,7 @@ class TaskControlller extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('task_create');
     }
 
     /**
@@ -59,7 +59,7 @@ class TaskControlller extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->authorize('task_edit');
     }
 
     /**
@@ -82,6 +82,6 @@ class TaskControlller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('task_delete');
     }
 }
