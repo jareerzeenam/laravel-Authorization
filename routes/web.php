@@ -40,7 +40,6 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'user.',
 
     ],function(){
-        Route::get('tasks',[\App\Http\Controllers\User\TaskControlller::class,'index'])
-        ->name('tasks.index');
+        Route::resource('tasks',\App\Http\Controllers\User\TaskControlller::class);
     });
 });
