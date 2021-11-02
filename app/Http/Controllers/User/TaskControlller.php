@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskControlller extends Controller
@@ -26,7 +27,7 @@ class TaskControlller extends Controller
      */
     public function create()
     {
-        $this->authorize('task_create');
+        $this->authorize('create', Task::class);
     }
 
     /**
@@ -59,7 +60,7 @@ class TaskControlller extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('task_edit');
+        $this->authorize('update', Task::class);
     }
 
     /**
@@ -82,6 +83,6 @@ class TaskControlller extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('task_delete');
+        $this->authorize('delete', Task::class);
     }
 }

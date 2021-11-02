@@ -12,7 +12,7 @@
                     <div class="flex flex-col text-left">
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                           <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                              @can('task_create')
+                              @can('create', \App\Models\Task::class)
                                 <a href="{{ route('user.tasks.create') }}"
                                 class="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">Add new tash</a>
                               @endcan
@@ -111,12 +111,12 @@
                                     </td>
                                     <td
                                       class=" px-6  py-4 whitespace-nowrap text-right text-sm font-medium">
-                                      @can('task_edit')
+                                      @can('update', $task)
                                         <a href="{{ route('user.tasks.edit', $task) }}"
                                         class= "inline-flex items-center px-4 py-2 bg-gray-500 hover:bg-blue-700 text-white rounded">Edit</a>
                                       @endcan
 
-                                      @can('task_delete')
+                                      @can('delete', $task)
 
                                       <form action="{{ route('user.tasks.destroy',$task) }}" method="POST">
                                         @csrf

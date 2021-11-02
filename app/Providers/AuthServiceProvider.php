@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        // 'App\Models\Task' => 'App\Policies\TaskPolity',
     ];
 
     /**
@@ -26,12 +26,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('task_create', function(User $user){
-            return $user->is_admin;
-        });
+        // Gate::define('create', function(User $user){
+        //     return $user->is_admin;
+        // });
 
-        // Gate::define('task_create', fn(User $user) => $user->is_admin);
-        Gate::define('task_edit', fn(User $user) => $user->is_admin);
-        Gate::define('task_delete', fn(User $user) => $user->is_admin);
+        // // Gate::define('task_create', fn(User $user) => $user->is_admin);
+        // Gate::define('task_edit', fn(User $user) => $user->is_admin);
+        // Gate::define('task_delete', fn(User $user) => $user->is_admin);
     }
 }
